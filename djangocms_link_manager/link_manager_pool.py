@@ -10,7 +10,8 @@ class LinkManagerPool(object):
         self._managers = {}
 
     def register(self, plugin_class, link_manager):
-        self._managers[plugin_class] = link_manager
+        if not plugin_class in self._managers:
+            self._managers[plugin_class] = link_manager
 
     def get_link_manager(self, cls):
         return self._managers.get(cls, None)
