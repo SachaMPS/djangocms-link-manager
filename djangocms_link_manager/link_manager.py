@@ -66,7 +66,7 @@ class LinkManager(object):
         else:
             if verify_exists:
                 try:
-                    response = urlopen(HeadRequest(url))
+                    response = urlopen(HeadRequest(url.encode("UTF-8")))
                     # NOTE: urllib should have already resolved any 301/302s
                     return 200 <= response.code < 400  # pragma: no cover
                 except (HTTPError, URLError):
